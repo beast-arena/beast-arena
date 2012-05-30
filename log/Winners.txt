@@ -1,0 +1,5 @@
+SamysBeast: 2
+totalGames: 7
+NikolaisBeast: 3
+Team8Beast: 1
+RemoteBeast: 1

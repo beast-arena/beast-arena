@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>widgetServerConnect</class>
+ <widget class="QWidget" name="widgetServerConnect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>576</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>576</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>576</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#widgetServerConnect {
+background-image: url(resources/clean_background.jpg);
+}</string>
+  </property>
+  <widget class="QPushButton" name="pushButtonNext">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>520</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>connect</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonBack">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>520</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>back</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelLogging">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>540</y>
+     <width>1001</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Logging</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>150</y>
+     <width>551</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Custom Server</string>
+   </property>
+   <widget class="QLabel" name="labelHost">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Server history:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonAddNew">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>110</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>add new server</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxHostPortCert">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>481</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widgetAddNew" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>501</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+     </font>
+    </property>
+    <widget class="QLineEdit" name="lineEditPort">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>80</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelNewPort">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>89</y>
+       <width>54</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Port:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelNewHost">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>48</y>
+       <width>54</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Host:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditCert">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>120</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelNewCert">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>127</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cert:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditHost">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>40</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButtonFileDialog">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>120</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonConnect">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>160</y>
+       <width>91</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>connect</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonCancel">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>160</y>
+       <width>91</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>cancel</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>150</y>
+     <width>181</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Team Server</string>
+   </property>
+   <widget class="QLabel" name="labelLastUpdate">
+    <property name="geometry">
+     <rect>
+      <x>32</x>
+      <y>69</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>requesting status...</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelOverview">
+    <property name="geometry">
+     <rect>
+      <x>32</x>
+      <y>46</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Overview:</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="teamServerList">
+    <property name="geometry">
+     <rect>
+      <x>29</x>
+      <y>90</y>
+      <width>111</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonConnectToTeamServer">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>300</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>connect</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>groupBox</zorder>
+  <zorder>groupBox_2</zorder>
+  <zorder>pushButtonNext</zorder>
+  <zorder>pushButtonBack</zorder>
+  <zorder>labelLogging</zorder>
+ </widget>
+ <tabstops>
+  <tabstop>teamServerList</tabstop>
+  <tabstop>pushButtonConnectToTeamServer</tabstop>
+  <tabstop>comboBoxHostPortCert</tabstop>
+  <tabstop>pushButtonAddNew</tabstop>
+  <tabstop>pushButtonBack</tabstop>
+  <tabstop>pushButtonNext</tabstop>
+  <tabstop>lineEditHost</tabstop>
+  <tabstop>lineEditPort</tabstop>
+  <tabstop>lineEditCert</tabstop>
+  <tabstop>toolButtonFileDialog</tabstop>
+  <tabstop>pushButtonCancel</tabstop>
+  <tabstop>pushButtonConnect</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonAddNew</sender>
+   <signal>clicked()</signal>
+   <receiver>widgetAddNew</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonAddNew</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButtonNext</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>885</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButtonNext</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>575</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>885</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>widgetAddNew</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>575</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonBack</sender>
+   <signal>clicked()</signal>
+   <receiver>widgetServerConnect</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>775</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>teamServerList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>pushButtonNext</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>885</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>teamServerList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>pushButtonConnectToTeamServer</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxHostPortCert</sender>
+   <signal>activated(QString)</signal>
+   <receiver>pushButtonConnectToTeamServer</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxHostPortCert</sender>
+   <signal>activated(QString)</signal>
+   <receiver>pushButtonNext</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>885</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonAddNew</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButtonConnectToTeamServer</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>875</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>teamServerList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>widgetAddNew</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>710</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxHostPortCert</sender>
+   <signal>activated(QString)</signal>
+   <receiver>widgetAddNew</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>710</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>widgetChoose</class>
+ <widget class="QWidget" name="widgetChoose">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>576</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>576</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>576</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#widgetChoose{
+	background-image: url(resources/chooseBeast/choose_beast_background.jpg);
+	min-width:1024px;
+	min-height:576px;
+	margin: 0 0 0 0;
+	padding:0;
+}
+
+#random_beast_btn {
+	background-image: url(resources/chooseBeast/random_beast_btn_inactive.png);
+	border: 0px;
+ }
+#random_beast_btn:hover {
+	background-image: url(resources/chooseBeast/random_beast_btn_active.png);	
+	border: 0px;
+ }
+
+#custom_beast_btn {
+	border: 0px;
+	background-image: url(resources/chooseBeast/custom_beast_btn_inactive.png);
+ }
+#custom_beast_btn:hover {
+	border: 0px;
+	background-image: url(resources/chooseBeast/custom_beast_btn_active.png);
+ }
+
+#manual_play_btn {
+	border: 0px;
+	background-image: url(resources/chooseBeast/manual_play_btn_inactive.png);
+ }
+#manual_play_btn:hover {
+	border: 0px;
+	background-image: url(resources/chooseBeast/manual_play_btn_active.png);
+ }</string>
+  </property>
+  <widget class="QPushButton" name="random_beast_btn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>341</width>
+     <height>576</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="statusTip">
+    <string>random</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="manual_play_btn">
+   <property name="geometry">
+    <rect>
+     <x>682</x>
+     <y>0</y>
+     <width>342</width>
+     <height>576</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="statusTip">
+    <string>manual</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="custom_beast_btn">
+   <property name="geometry">
+    <rect>
+     <x>341</x>
+     <y>0</y>
+     <width>341</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="statusTip">
+    <string>costom</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>random_beast_btn</tabstop>
+  <tabstop>custom_beast_btn</tabstop>
+  <tabstop>manual_play_btn</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>manual_play_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>widgetChoose</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>759</x>
+     <y>279</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>random_beast_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>widgetChoose</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>279</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
