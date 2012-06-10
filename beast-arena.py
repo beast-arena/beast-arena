@@ -134,16 +134,17 @@ if __name__ == '__main__':
                 time.sleep(0.01)
   
     except KeyboardInterrupt, SystemExit:
-        print "\nCaught KeyboardInterrupt,\ncurrently running threads:"
+        game.log.info("\nCaught KeyboardInterrupt, exiting...")
+        game.log.debug("Currently running threads:")
         for thread in threading.enumerate():
-            print ' ', thread
+            game.log.debug(' ' + str(thread))
             if not isinstance(thread,threading._MainThread) and thread.running:
 		thread.stop()
 	        thread.join()
 	      
 
-        print 'Threads after stop() & join():'
+        game.log.debug('Threads after stop() & join():')
         for thread in threading.enumerate():
-            print ' ', thread
-        print 'Exiting beast-arena MainThread...'
+            game.log.debug(' ' + str(thread))
+        game.log.debug('Exiting beast-arena MainThread...')
         game.log.info('beast-arena stopped: %s games played.', str(game.gamecount))
