@@ -80,6 +80,10 @@ class Config(object):
         return True if Config.config.get('networking', 'useNetworking')=='True' else False
 
     @staticmethod
+    def __getUseBeastAnalytics__():
+        return True if Config.config.get('system', 'useBeastAnalytics')== 'True' else False
+   
+    @staticmethod
     def __getPort__():
         return int(Config.config.get('networking', 'port'))
     

@@ -15,8 +15,8 @@ class Server(threading.Thread):
     sends the bewegeString to every client and waits for his response
     """
     
-    def __init__(self, app):
-        self.game = app
+    def __init__(self, game):
+        self.game = game
         self.clientMap = {}
         # Map with key (client addr) and value (count of established connections)
         self.clientIpCountMap = {}
@@ -33,6 +33,7 @@ class Server(threading.Thread):
         
     def run(self):
         self.running=True
+
         try:
             self.log.info('Starting server on port ' + str(Config.__getPort__()) + '...')
             self.bindsocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -107,7 +108,32 @@ class Server(threading.Thread):
                 response = 'Ja'
             else:
                 response = 'Nein'
-        elif request == 'Anmeldung!':
+        
+#        elif str(request).startswith('name='):
+#            name = str(request).split('=')[1]
+#            
+#            if self.game.gameSignOnPossible() and self.clientMap[client][1] == None:
+#                clientip, port = client.getpeername()
+#                if self.clientIpCountMap.has_key(clientip):
+#                    #TODO: @JKA move check if client is valid up to line 50,
+#                    #to not even let the client get into our clientmap if connectionLimit is reached
+#                    #currently in line 87 an exception is thrown as nonexisting sockets gets closed (or not)
+#                    if self.clientIpCountMap[clientip] < self.connectionLimitPerClient:
+#                        self.clientIpCountMap[clientip] = self.clientIpCountMap[clientip] + 1
+#                        response = self.registerClient(client, clientip, name)
+#                    else:
+#                        response = 'Fehler'
+#                else:
+#                    self.clientIpCountMap[clientip] = 1
+#                    response = self.registerClient(client, clientip, name)
+#            else:
+#                response = 'Fehler'
+        
+        elif request.startswith('Anmeldung!'):
+            name=None
+            splitString=request.split('!')
+            if splitString[1]!='':
+                name=splitString[1]
             if self.game.gameSignOnPossible() and self.clientMap[client][1] == None:
                 clientip, port = client.getpeername()
                 if self.clientIpCountMap.has_key(clientip):
@@ -116,14 +142,15 @@ class Server(threading.Thread):
                     #currently in line 87 an exception is thrown as nonexisting sockets gets closed (or not)
                     if self.clientIpCountMap[clientip] < self.connectionLimitPerClient:
                         self.clientIpCountMap[clientip] = self.clientIpCountMap[clientip] + 1
-                        response = self.registerClient(client, clientip)
+                        response = self.registerClient(client, clientip,name)
                     else:
                         response = 'Fehler'
                 else:
                     self.clientIpCountMap[clientip] = 1
-                    response = self.registerClient(client, clientip)
+                    response = self.registerClient(client, clientip,name)           
             else:
                 response = 'Fehler'
+                
         elif request == 'Weltgroesse?':
             if self.game.gameStarted:
                 return self.game.worldMap.getSize()
@@ -135,19 +162,20 @@ class Server(threading.Thread):
             response=self.game.getStartInSeconds()
         else:
             response = 'Fehler'
+       
         return response
     
-    def registerClient(self, client, clientip):
+    def registerClient(self, client, clientip, beastName=None):
         """
         registers the clients beast if possible
         @param client connection to one client which wants to register his beast
         @param clientip
         @return beastname returns the beasts name if registration was possible
         """
-        beastName = self.game.registerBeast(RemoteBeast(client, self))
-        self.clientMap[client] = self.clientMap[client][0], beastName
-        return beastName
-
+        registeredAs=self.game.registerBeast(RemoteBeast(client,self),beastName)
+        self.clientMap[client] = (self.clientMap[client][0], registeredAs)
+        return registeredAs
+    
     def prepareGameStart(self):
         """
         Remove all registered clients (which have a beast name) from clientMap.
@@ -186,3 +214,9 @@ class Server(threading.Thread):
                 client.close()
         except Exception as e:
             self.log.info('Error occured while trying to close connections: ' + str(e))
+
+
+if __name__=='__main__':
+    from Game import Game
+    s=Server(Game())
+    s.start()

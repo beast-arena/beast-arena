@@ -42,7 +42,7 @@ class WorldMap(object):
                 # check if 5x5 environment is empty:
                 if self.getEnvironment(beastObject) == '.' * 25:
                     break
-            self.world[rndX, rndY] = beastObject.name
+            self.world[rndX, rndY] = beastObject.ID
 
     def getRndX(self):
         """
@@ -230,13 +230,13 @@ class WorldMap(object):
     def getLastTenRoundsAsString(self):
         """ 
         Return the world's states of the last ten rounds, stored in list 'lastTenRounds', as String.
-        The particular states are separated by ';'.
+        The particular states are separated by ':'.
         @return world states of the last 10 rounds as one string, each followed by a ';' (except the last one)
         """
         rounds = ''
         for r in self.lastTenRounds:
-            rounds += r + ';'
-        return rounds.rstrip(';')
+            rounds += r + ':'
+        return rounds.rstrip(':')
 
     def writeWorldMaptoFile(self, filename, roundCount):
         """

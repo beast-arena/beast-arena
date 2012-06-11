@@ -19,7 +19,7 @@ class Game(threading.Thread):
     created (dependend on the umber of beasts)
     """   
 
-    def __init__(self, getStatisticForBeast=None):
+    def __init__(self):
         """
         constructor --> initialising Variables
         @param getStatisticForBeast List: insert a tupel of chars ('a','b')
@@ -36,10 +36,9 @@ class Game(threading.Thread):
         self.startTimeMillis = time.time() + Config.__getStartInSeconds__()
         self.startTime = time.ctime(self.startTimeMillis)
         self.roundCounter = 0
-        self.getStatisticForBeast = getStatisticForBeast
-        self.useBeastAnalytics = True if(getStatisticForBeast) else False
         self.deadBeasts = 0
         self.urwidRoundDelay = Config.__getUrwidRoundDelay__() / 1000.0
+        self.useBeastAnalytics = Config.__getUseBeastAnalytics__()
         self.gameStarted = False
         self.gameFinished = False
         self.running = False
@@ -47,11 +46,11 @@ class Game(threading.Thread):
 
         if self.enableUrwidVisualisation:
             self.useBeastAnalytics = True
-            self.getStatisticForBeast = ''
+        self.getStatisticForBeast = ''
         self.beastAnalytics = BeastAnalytics() if(self.useBeastAnalytics) else False
 
 
-    def registerBeast(self, beast):
+    def registerBeast(self, beast, name=None):
         """
         registers a Beast instance: give it a name, create a BeastObject 
         instance and store it in internal dictionary 'beastObjectMap'.
@@ -59,15 +58,19 @@ class Game(threading.Thread):
         @param beast Beast: is the clients beast
         @return returns the beast's name
         """
-        if self.gameSignOnPossible():
-            name = string.ascii_letters[len(self.beastObjectMap)]
-        else:
+        
+        if not self.gameSignOnPossible():
             self.log.warning('registered beast limit reached')
             return
-            
-        beastObject = BeastObject(beast, name, self.beastAnalytics)
+        
+        beastID = string.ascii_letters[len(self.beastObjectMap)]
+        
+        if name==None:
+            name=beastID
+              
+        beastObject = BeastObject(beast, beastID,name, self.beastAnalytics)
         self.rankingList.append(None) # generates proper length of rankingList
-        self.beastObjectMap[name] = beastObject
+        self.beastObjectMap[beastID] = beastObject
         
         self.log.info("beast " + name + " registered")
         return name
@@ -108,7 +111,10 @@ class Game(threading.Thread):
         
         for beastObject in self.beastObjectMap.values():
             #this sends the last ten rounds to client after game is finished
-            beastObject.beast.bewege(str(beastObject.energy) + ';' + 'Ende' + ';' + self.worldMap.getLastTenRoundsAsString() + ';')
+            s=''
+            if self.beastAnalytics:
+                s+=self.beastAnalytics.getStatisticString(beastObject.name,beastObject.ID)+';'
+            beastObject.beast.bewege(str(beastObject.energy) + ';' + 'Ende' + ';' + self.worldMap.getLastTenRoundsAsString() + ';'+s)
           
         self.log.info(self.getRankingList())
         #BeastAnalytics
@@ -232,3 +238,6 @@ class Game(threading.Thread):
         stops game thread
         """
         self.running = False
+        
+if __name__=='__main__':
+    game=Game()

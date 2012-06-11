@@ -23,4 +23,4 @@ class Observable(object):
         calls notify of every registered observer
         """
         for observer in self.observers:
-            observer.notify()
+            observer.update()

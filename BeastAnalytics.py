@@ -21,7 +21,7 @@ class BeastAnalytics(object):
         """
         self.beastObjectMap = beastObjectMap
         for beastObject in beastObjectMap.values():
-            self.analyticBeastMap[beastObject.name] = AnalyticBeastObject(beastObject.name, beastObject)
+            self.analyticBeastMap[beastObject.ID] = AnalyticBeastObject(beastObject.ID, beastObject)
 
     def nextRound(self):
         """
@@ -34,120 +34,120 @@ class BeastAnalytics(object):
             analyticBeastObject.madeMoveThisRound = False
             analyticBeastObject.energyGainedThisRound = False
 
-    def madeHorizontalMove(self, name):
+    def madeHorizontalMove(self, ID):
         """
         increment horizontal moves made by 1
         """
-        self.analyticBeastMap[name].horizontal += 1
-        self.analyticBeastMap[name].moveCosts += 2
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].horizontal += 1
+        self.analyticBeastMap[ID].moveCosts += 2
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
             
-    def madeDiagonalMove(self, name):
+    def madeDiagonalMove(self, ID):
         """
         increment diagonal moves made by 1
         """
-        self.analyticBeastMap[name].diagonal += 1
-        self.analyticBeastMap[name].moveCosts += 3
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].diagonal += 1
+        self.analyticBeastMap[ID].moveCosts += 3
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
                 
-    def madeVerticalMove(self, name):
+    def madeVerticalMove(self, ID):
         """
         increment vertical moves made by 1
         """
-        self.analyticBeastMap[name].vertical += 1
-        self.analyticBeastMap[name].moveCosts += 2
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].vertical += 1
+        self.analyticBeastMap[ID].moveCosts += 2
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
                 
-    def madeHorizontalSprintMove(self, name):
+    def madeHorizontalSprintMove(self, ID):
         """
         increment horizontal sprint moves made by 1
         """
-        self.analyticBeastMap[name].sprintsHorizontal += 1
-        self.analyticBeastMap[name].sprints += 1
-        self.analyticBeastMap[name].moveCosts += 5
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].sprintsHorizontal += 1
+        self.analyticBeastMap[ID].sprints += 1
+        self.analyticBeastMap[ID].moveCosts += 5
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
                 
-    def madeDiagonalSprintMove(self, name):
+    def madeDiagonalSprintMove(self, ID):
         """
         increment diagonal sprint moves made by 1
         """
-        self.analyticBeastMap[name].sprintsDiagonal += 1
-        self.analyticBeastMap[name].sprints += 1
-        self.analyticBeastMap[name].moveCosts += 7
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].sprintsDiagonal += 1
+        self.analyticBeastMap[ID].sprints += 1
+        self.analyticBeastMap[ID].moveCosts += 7
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
                 
-    def madeVerticalSprintMove(self, name):
+    def madeVerticalSprintMove(self, ID):
         """
         increment vertical sprint moves made by 1
         """
-        self.analyticBeastMap[name].sprintsVertical += 1
-        self.analyticBeastMap[name].sprints += 1
-        self.analyticBeastMap[name].moveCosts += 5
-        self.analyticBeastMap[name].moves += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].sprintsVertical += 1
+        self.analyticBeastMap[ID].sprints += 1
+        self.analyticBeastMap[ID].moveCosts += 5
+        self.analyticBeastMap[ID].moves += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
         
-    def madeNotAllowedMove(self, name):
+    def madeNotAllowedMove(self, ID):
         """
         increment not allowed moves made by 1
         """
-        self.analyticBeastMap[name].notAllowedMoves += 1
-        self.analyticBeastMap[name].moveCosts += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].notAllowedMoves += 1
+        self.analyticBeastMap[ID].moveCosts += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
         
-    def stay(self, name):
+    def stay(self, ID):
         """
         increment stays moves made by 1
         """
-        self.analyticBeastMap[name].stays += 1
-        self.analyticBeastMap[name].moveCosts += 1
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].stays += 1
+        self.analyticBeastMap[ID].moveCosts += 1
+        self.analyticBeastMap[ID].madeMoveThisRound = True
        
-    def hide(self, name):
+    def hide(self, ID):
         """
         increment hides moves made by 1
         """
-        self.analyticBeastMap[name].hides += 1
-        self.analyticBeastMap[name].moveCosts += 2
-        self.analyticBeastMap[name].madeMoveThisRound = True
+        self.analyticBeastMap[ID].hides += 1
+        self.analyticBeastMap[ID].moveCosts += 2
+        self.analyticBeastMap[ID].madeMoveThisRound = True
         
-    def devourFood(self, name):
+    def devourFood(self, ID):
         """
         increases either food devourd or food rained on beast 
         weather move was made this round or not
         """
-        if self.analyticBeastMap[name].madeMoveThisRound:
-            self.analyticBeastMap[name].rainedFoodOnBeast += 1
+        if self.analyticBeastMap[ID].madeMoveThisRound:
+            self.analyticBeastMap[ID].rainedFoodOnBeast += 1
             return
-        self.analyticBeastMap[name].foodConsumed += 1
-        self.analyticBeastMap[name].energyGainedThisRound = True
+        self.analyticBeastMap[ID].foodConsumed += 1
+        self.analyticBeastMap[ID].energyGainedThisRound = True
         
-    def markAsDead(self, name, energy):
+    def markAsDead(self, ID, energy):
         """
         marks beast as dead
         """
-        self.analyticBeastMap[name].energyBeforeDeath == energy
-        self.analyticBeastMap[name].diedAtRound == self.roundCounter
+        self.analyticBeastMap[ID].energyBeforeDeath == energy
+        self.analyticBeastMap[ID].diedAtRound == self.roundCounter
         
-    def wonFight(self, name, energy):
+    def wonFight(self, ID, energy):
         """
         increments fights won by 1 and modifies energy variables involved
         """
-        self.analyticBeastMap[name].fightsWon += 1
-        self.analyticBeastMap[name].energyGainedThroughFights += energy
-        self.analyticBeastMap[name].energyGainedThisRound = True
+        self.analyticBeastMap[ID].fightsWon += 1
+        self.analyticBeastMap[ID].energyGainedThroughFights += energy
+        self.analyticBeastMap[ID].energyGainedThisRound = True
         
-    def getStatisticFile(self, name):
+    def getStatisticFile(self, ID):
         """
         generates output file containing beast statistics
         """
-        if not self.analyticBeastMap.has_key(name):
+        if not self.analyticBeastMap.has_key(ID):
             return
-        filename = 'Analytic_' + name
+        filename = 'Analytic_' + ID
         
         # If new game has started delete the old WorldMap file:
         if os.path.isfile(filename):
@@ -157,49 +157,74 @@ class BeastAnalytics(object):
                 print 'Error occured while trying to delete file: ' + filename + ' - Err: ' + exc
         try:
             f = open(filename, 'a')
-            f.write(self.getStatistic(name))
+            f.write(self.getStatistic(ID))
             f.close()
         except IOError as exc:
             print 'Error occured while writing beast statistics to file: ', exc
-         
-    def getStatistic(self, name):
+      
+    def getStatisticString(self,name,ID):
+        """
+        returns a formatted string for passing to clients after game
+        """
+        
+        if not self.analyticBeastMap.has_key(ID):
+            return ''
+    
+        s = name + \
+        ':' + str(self.analyticBeastMap[ID].moves) + \
+        ':' + str(self.analyticBeastMap[ID].vertical) + \
+        ':' + str(self.analyticBeastMap[ID].horizontal) + \
+        ':' + str(self.analyticBeastMap[ID].diagonal) + \
+        ':' + str(self.analyticBeastMap[ID].sprints) + \
+        ':' + str(self.analyticBeastMap[ID].sprintsVertical) + \
+        ':' + str(self.analyticBeastMap[ID].sprintsHorizontal) + \
+        ':' + str(self.analyticBeastMap[ID].sprintsDiagonal) + \
+        ':' + str(self.analyticBeastMap[ID].notAllowedMoves) + \
+        ':' + str(self.analyticBeastMap[ID].hides) + \
+        ':' + str(self.analyticBeastMap[ID].stays) + \
+        ':' + str(float(self.analyticBeastMap[ID].moveCosts)/float(self.analyticBeastMap[ID].moves))+\
+        ':' + str(self.analyticBeastMap[ID].foodConsumed) + \
+        ':' + str(self.analyticBeastMap[ID].fightsWon)
+        
+        return s
+       
+    def getStatistic(self,name, ID):
         """
         returns string containing current statistic for beast
         """      
-        if not self.analyticBeastMap.has_key(name):
+        if not self.analyticBeastMap.has_key(ID):
             return
     
         #generating header        
-        statistic = ''
         statistic = 'Statistic for Beast: ' \
-        + name + '\nType: ' + self.analyticBeastMap[name].type + '\n'\
+        + name+ '\nType: ' + self.analyticBeastMap[ID].type + '\n'\
         '\nFIGHT DATA:\naverage energy gained per round with fights: ' + \
-        (str(float(self.analyticBeastMap[name].foodConsumed*5+self.analyticBeastMap[name].energyGainedThroughFights)/float(self.analyticBeastMap[name].moves)) \
-        if self.analyticBeastMap[name].moves > 0 else "0") + \
-        '\n# of fights won: ' + str(self.analyticBeastMap[name].fightsWon) + \
+        (str(float(self.analyticBeastMap[ID].foodConsumed*5+self.analyticBeastMap[ID].energyGainedThroughFights)/float(self.analyticBeastMap[ID].moves)) \
+        if self.analyticBeastMap[ID].moves > 0 else "0") + \
+        '\n# of fights won: ' + str(self.analyticBeastMap[ID].fightsWon) + \
         '\naverage energy gained per fight: '
-        if self.analyticBeastMap[name].fightsWon != 0:
-            statistic += str(float(self.analyticBeastMap[name].energyGainedThroughFights)/float(self.analyticBeastMap[name].fightsWon))
+        if self.analyticBeastMap[ID].fightsWon != 0:
+            statistic += str(float(self.analyticBeastMap[ID].energyGainedThroughFights)/float(self.analyticBeastMap[ID].fightsWon))
         else: statistic += '0'
         
         #generating moving data
         statistic += '\nMOVING DATA:' + \
-        '\nmoves overall: ' + str(self.analyticBeastMap[name].moves) + \
-        '\nmove costs overall: ' + str(self.analyticBeastMap[name].moveCosts) + \
-        '\nvertical moves: ' + str(self.analyticBeastMap[name].vertical) + \
-        '\nhorizontal moves: ' + str(self.analyticBeastMap[name].horizontal) + \
-        '\ndiagonal moves: ' + str(self.analyticBeastMap[name].diagonal) + \
-        '\nvertical sprints: ' + str(self.analyticBeastMap[name].sprintsVertical) + \
-        '\nhorizontal sprints: ' + str(self.analyticBeastMap[name].sprintsHorizontal) + \
-        '\ndiagonal sprints: ' + str(self.analyticBeastMap[name].sprintsDiagonal) + \
-        '\nsprints: ' + str(self.analyticBeastMap[name].sprints) + \
-        '\nnot allowed moves: ' + str(self.analyticBeastMap[name].notAllowedMoves) + \
-        '\nhides: ' + str(self.analyticBeastMap[name].hides) + \
-        '\nstays: ' + str(self.analyticBeastMap[name].stays) + '\n' + \
-        '\nfood consumed: ' + str(self.analyticBeastMap[name].foodConsumed) + \
-        '\nfood rained on beast: ' + str(self.analyticBeastMap[name].rainedFoodOnBeast) + \
-        '\naverage moving cost: ' + (str(float(self.analyticBeastMap[name].moveCosts)/float(self.analyticBeastMap[name].moves)) \
-                                     if self.analyticBeastMap[name].moves > 0 else '0') + \
-        '\naverage energy gained per round without fights: ' + (str(float(self.analyticBeastMap[name].foodConsumed*5)/float(self.analyticBeastMap[name].moves)) \
-                                                                 if self.analyticBeastMap[name].moves > 0 else '0')
+        '\nmoves overall: ' + str(self.analyticBeastMap[ID].moves) + \
+        '\nmove costs overall: ' + str(self.analyticBeastMap[ID].moveCosts) + \
+        '\nvertical moves: ' + str(self.analyticBeastMap[ID].vertical) + \
+        '\nhorizontal moves: ' + str(self.analyticBeastMap[ID].horizontal) + \
+        '\ndiagonal moves: ' + str(self.analyticBeastMap[ID].diagonal) + \
+        '\nvertical sprints: ' + str(self.analyticBeastMap[ID].sprintsVertical) + \
+        '\nhorizontal sprints: ' + str(self.analyticBeastMap[ID].sprintsHorizontal) + \
+        '\ndiagonal sprints: ' + str(self.analyticBeastMap[ID].sprintsDiagonal) + \
+        '\nsprints: ' + str(self.analyticBeastMap[ID].sprints) + \
+        '\nnot allowed moves: ' + str(self.analyticBeastMap[ID].notAllowedMoves) + \
+        '\nhides: ' + str(self.analyticBeastMap[ID].hides) + \
+        '\nstays: ' + str(self.analyticBeastMap[ID].stays) + '\n' + \
+        '\nfood consumed: ' + str(self.analyticBeastMap[ID].foodConsumed) + \
+        '\nfood rained on beast: ' + str(self.analyticBeastMap[ID].rainedFoodOnBeast) + \
+        '\naverage moving cost: ' + (str(float(self.analyticBeastMap[ID].moveCosts)/float(self.analyticBeastMap[ID].moves)) \
+                                     if self.analyticBeastMap[ID].moves > 0 else '0') + \
+        '\naverage energy gained per round without fights: ' + (str(float(self.analyticBeastMap[ID].foodConsumed*5)/float(self.analyticBeastMap[ID].moves)) \
+                                                                 if self.analyticBeastMap[ID].moves > 0 else '0')
         return statistic

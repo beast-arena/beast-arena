@@ -18,8 +18,9 @@ class Logging(object):
     2: VERBOSE mode: use to print game related, but mostly unnecessary messages 
     3: SUCCINT mode: use to print highly important messages only! always appear in every log
     """
-    def __init__(self, game):
-        self.game = game
+
+    def __init__(self, app):
+        self.game = app
         self.useFileLogging = Config.__getUseFileLogging__()
         self.interfaceLoggingLevel = Config.__getInterfaceLoggingLevel__()
         self.fileLoggingLevel = Config.__getFileLoggingLevel__()

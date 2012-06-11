@@ -11,8 +11,12 @@ class BeastObject(object):
     @class BeastObject
     creates an instance of a wrapped beast which can be handled by the server
     """
-    def __init__(self, beast, name, beastAnalytics=None):
-        self.name = name
+    def __init__(self, beast, beastID,name=None, beastAnalytics=None):
+        self.ID=beastID
+        if name==None:
+            self.name=beastID
+        else:
+            self.name = name
         self.energy = 30
         self.beast = beast
         self.x = None
@@ -97,25 +101,27 @@ class BeastObject(object):
             self.setBeastAsDead()
             worldMap.deleteBeastFromWorld(self.x, self.y)
                 
-        #Beast Analytics
+        #Beast Analyticsproce
         if self.beastAnalytics:
             if destination not in whitelistedMoves:
-                self.beastAnalytics.madeNotAllowedMove(self.name)
+                self.beastAnalytics.madeNotAllowedMove(self.ID)
             elif destination in (0, 4, 20, 24):
-                self.beastAnalytics.madeDiagonalSprintMove(self.name)
+                self.beastAnalytics.madeDiagonalSprintMove(self.ID)
             elif destination in (10, 14):
-                self.beastAnalytics.madeHorizontalSprintMove(self.name)
+                self.beastAnalytics.madeHorizontalSprintMove(self.ID)
             elif destination in (2, 22):
-                self.beastAnalytics.madeVerticalSprintMove(self.name)
+                self.beastAnalytics.madeVerticalSprintMove(self.ID)
             elif destination in (11, 13):
-                self.beastAnalytics.madeHorizontalMove(self.name)
+                self.beastAnalytics.madeHorizontalMove(self.ID)
             elif destination in (7, 17):
-                self.beastAnalytics.madeVerticalMove(self.name)
+                self.beastAnalytics.madeVerticalMove(self.ID)
             elif destination in (6, 8, 16, 18):
-                self.beastAnalytics.madeDiagonalMove(self.name)
+                self.beastAnalytics.madeDiagonalMove(self.ID)
             elif destination == '?':
-                self.beastAnalytics.hide(self.name)
+                self.beastAnalytics.hide(self.ID)
     
+            return destination
+        
     def setBeastAsDead(self):
         """
         sets the life to zero and sets the life-flag to False == Dead
@@ -136,11 +142,11 @@ class BeastObject(object):
         #Beast Analytics
         if self.beastAnalytics:
             if addEnergy == 0:
-                self.beastAnalytics.markAsDead(self.name, self.energy)
+                self.beastAnalytics.markAsDead(self.ID, self.energy)
             elif addEnergy == 5:
-                self.beastAnalytics.devourFood(self.name)
+                self.beastAnalytics.devourFood(self.ID)
             elif addEnergy != 0 and addEnergy != 5:
-                self.beastAnalytics.wonFight(self.name, addEnergy)
+                self.beastAnalytics.wonFight(self.ID, addEnergy)
         
         #this is actually the important line ;)
         self.energy += addEnergy
@@ -151,4 +157,4 @@ class BeastObject(object):
         
         called especially by the ranking list, to get the simple name of a beast       
         '''
-        return self.name
+        return self.ID

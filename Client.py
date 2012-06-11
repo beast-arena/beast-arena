@@ -2,13 +2,13 @@
 """
 $Id: Client.py 497 2012-01-17 22:25:21Z mli $
 """
-import ssl, string, time
+import ssl,time
 from SocketCommunication import read, write
 from socket import socket
 from SamysBeast import SamysBeast
 from NikolaisBeast import NikolaisBeast
 from Team8Beast import Team8Beast
-import sys
+import sys,select
 
 class Client():
     """
@@ -20,12 +20,12 @@ class Client():
         creating ssl connection to given host and port
         you also have to spezifiy the server certificate
         """
-
-        if len(sys.argv) < 3:
-            print 'usage: Client.py <host> <team number>'
-            sys.exit()
-        host = sys.argv[1]
-        team = sys.argv[2]
+        
+#        if len(sys.argv) < 3:
+#            print 'usage: Client.py <host> <team number>'
+#            sys.exit()
+        host = 'localhost'
+        team = '8'
 
         print 'Host:', host, ', Team:', team
 
@@ -40,7 +40,7 @@ class Client():
         trys to connect to server with given arguments
         @return: returns connection status
         """
-	
+        
         try:
             self.connection = ssl.wrap_socket(socket(), cert_reqs=ssl.CERT_REQUIRED,
                             ssl_version=ssl.PROTOCOL_SSLv3, ca_certs=self.serverCert)
@@ -62,26 +62,37 @@ class Client():
             return
         
         request = 'Spielbeginn?'
-        print 'request:', request
         write(self.connection, request)
         response = read(self.connection)
         print 'cur time:', time.asctime()
         print 'response:', response
+        
         write(self.connection, 'Anmeldung moeglich?')
         if read(self.connection) == 'Ja':
-            print 'Anmeldung moeglich? Ja'
-            write(self.connection, 'Anmeldung!')
+            print 'Anmeldung moeglich? Ja' 
+            write(self.connection,'startdelay?')
+            
+            gamestart=float(read(self.connection))-0.5
+            print "please enter your prefered name, you have ",int(gamestart)," seconds to answer!"
+            
+            try:
+                i,o, e = select.select([sys.stdin], [], [], gamestart)
+                if (i):
+                    write(self.connection, 'Anmeldung!' + sys.stdin.readline().strip()) 
+                else:
+                    write(self.connection, 'Anmeldung!')  
+            except Exception:
+                print 'Anmeldung gescheitert' 
+                
+                
             response = read(self.connection)
-            if response in string.ascii_letters and len(response) == 1:
-                print 'Assigned Beast name:', response
-                print 'Waiting for bewege() requests...'
-            else:
-                print 'Anmeldung gescheitert'
-                return
+            print 'Assigned Beast name:', response
+            print 'Waiting for bewege() requests...'
+
         else:
             print 'Anmeldung gescheitert'
             return
-
+        time.sleep(0.5)
         self.listening()
     
 
@@ -93,6 +104,7 @@ class Client():
         with his calculated destination
         after we get 'Ende' the ssl connection will be closed
         """
+        
         while True:
             try:
                 bewegeString = read(self.connection)
@@ -109,9 +121,10 @@ class Client():
                     print 'sent=' + destination
                     write(self.connection, destination)
             except Exception as e:
-                print time.asctime(), e, ': lost connection to Server'
+                print time.asctime(), e.args, ': lost connection to Server'
                 break
         self.connection.close()
+        
 
 if __name__ == '__main__':
     client = Client()
