@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: SamysBeast.py 444 2012-01-13 12:53:39Z sze $
-"""
+
 import numpy
 import random
 
 class Team8Beast(object):
-    '''Beast for pyBeasts by team8'''
+    '''Beast by team8 (compilation of the most intelligent other beasts)'''
     
     def __init__(self):
         self.chased=False #flag if the beast chased a smaller beast in last round
@@ -255,3 +253,4 @@ def main():
     
 if __name__=='__main__':
     main()
+

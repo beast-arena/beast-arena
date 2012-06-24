@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 19 14:00:02 2011
-$Id: Beast.py 429 2012-01-12 15:30:51Z nkr $
-"""
+
 import random
 
 class Beast(object):
@@ -32,3 +29,4 @@ class Beast(object):
             return random.choice(whitelistedMoves)
         else:
             return
+

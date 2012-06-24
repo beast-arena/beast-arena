@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-$Id: beast-arena.py 515 2012-05-21 16:43:54Z sze $
-"""
+
 from Game import Game
 from UrwidVisualisation import UrwidVisualisation
 from Server import Server
@@ -148,3 +146,4 @@ if __name__ == '__main__':
             game.log.debug(' ' + str(thread))
         game.log.debug('Exiting beast-arena MainThread...')
         game.log.info('beast-arena stopped: %s games played.', str(game.gamecount))
+

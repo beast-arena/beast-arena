@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 18 14:27:36 2011
-$Id: WorldMap.py 511 2012-05-20 09:17:37Z nkr $
-"""
+
 from Config import Config
 import math, numpy, random, string, re, os, logging
 
@@ -270,3 +267,4 @@ class WorldMap(object):
         @return size of the world map
         """
         return str(self.height) + "x" + str(self.width)
+

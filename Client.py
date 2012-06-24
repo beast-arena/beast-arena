@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: Client.py 497 2012-01-17 22:25:21Z mli $
-"""
+
 import ssl, string, time
 from SocketCommunication import read, write
 from socket import socket

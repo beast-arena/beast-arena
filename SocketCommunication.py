@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: SocketCommunication.py 479 2012-01-16 14:23:48Z sze $
 
+"""
 This module supports in writing and reading data from sockets.
 """
 

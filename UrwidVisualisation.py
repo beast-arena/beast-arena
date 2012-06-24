@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: UrwidVisualisation.py 515 2012-05-21 16:43:54Z sze $
-"""
+
 import urwid, time, threading, logging
 from LoggingHandler import UrwidLoggingHandler
 
@@ -267,4 +265,4 @@ class UrwidVisualisation(threading.Thread):
 #        self.log.warning('urwidVisualisatoin: Stop() called ')
         self.running = False
         #only raise urwid.ExitMainLoop-Exception if stop initiated by key-press
-     
+

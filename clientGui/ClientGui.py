@@ -1,7 +1,6 @@
 #! /usr/bin/env python
-"""
-$Id: ClientGui.py 503 2012-01-22 23:09:58Z sze $
-"""
+# -*- coding: utf-8 -*-
+
 from PyQt4 import QtCore, QtGui, uic
 import  time, sys, os, imp, string
 basePath = sys.argv[0].split('/')
@@ -740,3 +739,4 @@ if __name__ == '__main__':
     gui= ClientGui()
     splash.destroy()
     sys.exit(app.exec_())
+

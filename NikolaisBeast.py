@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: NikolaisBeast.py 511 2012-05-20 09:17:37Z nkr $
-"""
+
 import string
+
 class NikolaisBeast(object):
     """artificial intelligence of my beast"""
 
@@ -211,3 +210,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

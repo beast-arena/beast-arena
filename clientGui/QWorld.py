@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: QWorld.py 492 2012-01-17 11:41:10Z sze $
-"""
+
 import sys,os
 from PyQt4 import QtGui
 
@@ -106,5 +104,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 

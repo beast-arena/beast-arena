@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 18 18:30:14 2011
-$Id: BeastObject.py 510 2012-05-17 22:43:51Z mli $
-"""
+
 from Config import Config
 import logging
 
@@ -152,3 +149,4 @@ class BeastObject(object):
         called especially by the ranking list, to get the simple name of a beast       
         '''
         return self.name
+

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: Observable.py 447 2012-01-13 16:36:30Z nkr $
-"""
+
 class Observable(object):
     """
     an observable class has to inherit this class and to call notifyObeservers()
@@ -24,3 +22,4 @@ class Observable(object):
         """
         for observer in self.observers:
             observer.notify()
+

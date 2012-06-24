@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: QClient.py 505 2012-02-01 09:32:09Z sze $
-"""
+
 from PyQt4 import QtCore
 import ssl, time, string, random
 from SocketCommunication import read, write
@@ -274,4 +272,4 @@ class QClient(QtCore.QThread):
             self.connDetailsNotSet = False
             self.beast = beast
             self.deadBeast = False
-        
+

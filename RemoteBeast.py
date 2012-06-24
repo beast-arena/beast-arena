@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 19 14:00:02 2011
-$Id: RemoteBeast.py 510 2012-05-17 22:43:51Z mli $
-"""
+
 import socket, time, select, logging
 from SocketCommunication import read, write
 
@@ -14,8 +11,7 @@ class RemoteBeast(object):
         self.socket = socket
         self.server = server
         self.log = logging.getLogger('beast-arena-logging')
-        
-        
+
     def bewege(self, paramString):
         """
         forwards the paramString to the client
@@ -25,7 +21,6 @@ class RemoteBeast(object):
         try:
             if self.socket is None:
                 return ''
-#            time.sleep(0.1)
             write(self.socket, paramString)
             params = paramString.split(';', 2)
             energy = params[0]
@@ -41,7 +36,6 @@ class RemoteBeast(object):
                     inputReady, outputReady, exceptionReady = select.select([self.socket], [], [], 0)
                     for sendingClient in inputReady:
                         answer = read(sendingClient)
-#                        time.sleep(0.2)
                         if answer == '?':
                             return answer
                         try:
@@ -60,3 +54,4 @@ class RemoteBeast(object):
             self.log.warning(str(e) + ',AttributeError: closing socket')
             self.socket.close()
             self.socket = None
+

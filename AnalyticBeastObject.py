@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 18 18:30:14 2011
-$Id: AnalyticBeastObject.py 429 2012-01-12 15:30:51Z nkr $
-"""
-
 
 class AnalyticBeastObject(object):
     """
@@ -50,6 +45,4 @@ class AnalyticBeastObject(object):
         self.avgMovingCost = 0
         self.sprints = 0 #done
         self.notAllowedMoves = 0 #done
-        
-                
-        
+

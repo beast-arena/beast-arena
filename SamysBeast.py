@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: SamysBeast.py 444 2012-01-13 12:53:39Z sze $
-"""
+
 import numpy
 import random
 
 class SamysBeast(object):
-    '''Beast for pyBeasts by Samy'''
+    '''Beast implementation by Samy'''
     
     def __init__(self):
         self.worldMapStateArray=None
@@ -229,3 +227,4 @@ def main():
     
 if __name__=='__main__':
     main()
+

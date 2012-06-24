@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: ConfigTest.py 159 2011-11-15 07:14:06Z mli $
-"""
+
 import unittest
 from Config import Config
 
@@ -55,3 +53,4 @@ class ConfigTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

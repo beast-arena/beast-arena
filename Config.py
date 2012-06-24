@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 21 16:14:07 2011
-$Id: Config.py 510 2012-05-17 22:43:51Z mli $
-"""
+
 import ConfigParser
 
 class Config(object):
@@ -102,4 +99,4 @@ class Config(object):
     @staticmethod
     def __getConnectionLimitPerClient__():
         return int(Config.config.get('networking', 'connectionLimitPerClient'))
-    
+

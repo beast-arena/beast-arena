@@ -1,8 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-$Id: Server.py 515 2012-05-21 16:43:54Z sze $
-"""
+
 from Config import Config
 from RemoteBeast import RemoteBeast
 from SocketCommunication import read, write
@@ -11,8 +8,8 @@ import socket, ssl, select, threading, sys, logging, time
 class Server(threading.Thread):
     """
     @class Server
-    this Server handles the connections to several clients, answers requests
-    sends the bewegeString to every client and waits for his response
+    this Server handles the connections to several clients, answers requests,
+    sends the bewegeString to every client and waits for his response.
     """
     
     def __init__(self, app):
@@ -21,7 +18,6 @@ class Server(threading.Thread):
         # Map with key (client addr) and value (count of established connections)
         self.clientIpCountMap = {}
         self.connectionLimitPerClient = Config.__getConnectionLimitPerClient__()
-#        self.startTime = time.time() + Config.__getStartInSeconds__()
         threading.Thread.__init__(self)
         self.daemon = True
         self.log = logging.getLogger('beast-arena-logger')
@@ -40,7 +36,6 @@ class Server(threading.Thread):
             self.bindsocket.listen(5)
             self.bindsocket.settimeout(0.1)
     
-#            while not self.game.gameFinished and self.running: 
             while self.running:
                 # initialize 
                 self.closeConnections()
@@ -186,3 +181,4 @@ class Server(threading.Thread):
                 client.close()
         except Exception as e:
             self.log.info('Error occured while trying to close connections: ' + str(e))
+

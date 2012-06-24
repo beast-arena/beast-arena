@@ -93,3 +93,4 @@ def timedeltaToTotalSeconds(td):
 
 if __name__=='__main__':
     parseStartTime(12)
+

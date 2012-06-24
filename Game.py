@@ -1,8 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-$Id: Game.py 510 2012-05-17 22:43:51Z mli $
-"""
+
 from BeastObject import BeastObject
 from WorldMap import WorldMap
 from Config import Config
@@ -15,9 +12,9 @@ import string, random, time, threading, logging
 class Game(threading.Thread):
     """ 
     global Game class
-    here will be your beast registered and seated on WorldMap after it is 
-    created (dependend on the umber of beasts)
-    """   
+    here will your beast be registered and seated on WorldMap after it has been 
+    created (dependend on the number of beasts)
+    """
 
     def __init__(self, getStatisticForBeast=None):
         """
@@ -232,3 +229,4 @@ class Game(threading.Thread):
         stops game thread
         """
         self.running = False
+

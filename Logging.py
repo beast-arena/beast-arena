@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: Logging.py 511 2012-05-20 09:17:37Z nkr $
-"""
 
 from Config import Config
 import os.path
@@ -88,3 +85,4 @@ class Logging(object):
                 f.close()
             except IOError as exc:
                 print 'Error occured while logging to file: ', exc
+

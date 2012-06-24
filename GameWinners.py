@@ -1,8 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-$Id: GameWinners.py 511 2012-05-20 09:17:37Z nkr $
-"""
+
 import string
 
 class GameWinners(object):
@@ -44,4 +41,4 @@ class GameWinners(object):
         for item in self.winnerMap.items():
             s = str(item[0]) + ': ' + str(item[1]) + '\n'
             f.write(s)
-                      
+

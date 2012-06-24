@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: QEnvironment.py 478 2012-01-16 14:18:27Z mko $
-"""
-import sys,os
 
+import sys,os
 from PyQt4 import QtGui,QtCore
 
 basePath = sys.argv[0].split('/')
@@ -238,5 +235,4 @@ if __name__ == '__main__':
 #    ex.moveTo(0)
 #    ex.clear()
     sys.exit(app.exec_())
-
 

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: LoggingHandler.py 467 2012-01-16 10:34:40Z mli $
-"""
+
 import logging
 
 class UrwidLoggingHandler(logging.Handler):
@@ -37,3 +35,4 @@ class GuiLoggingHandler(logging.Handler):
         here should the gui slot be targeted to display messages!
         """
         print record
+

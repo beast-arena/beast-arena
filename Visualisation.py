@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 31 11:06:09 2011
-$Id: Visualisation.py 447 2012-01-13 16:36:30Z nkr $
-"""
+
 import curses, time
 
 class Visualisation(object):   
@@ -31,3 +28,4 @@ class Visualisation(object):
         Closes the curses window so that the terminal is usable by the user again.
         """
         curses.endwin()
+

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-$Id: BeastAnalytics.py 511 2012-05-20 09:17:37Z nkr $
-"""
+
 from AnalyticBeastObject import AnalyticBeastObject
 import os.path
 
@@ -203,3 +201,4 @@ class BeastAnalytics(object):
         '\naverage energy gained per round without fights: ' + (str(float(self.analyticBeastMap[name].foodConsumed*5)/float(self.analyticBeastMap[name].moves)) \
                                                                  if self.analyticBeastMap[name].moves > 0 else '0')
         return statistic
+
