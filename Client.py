@@ -21,11 +21,14 @@ class Client():
         you also have to spezifiy the server certificate
         """
         
-#        if len(sys.argv) < 3:
+        if len(sys.argv) < 3:
+            host = 'localhost'
+            team = '8'
 #            print 'usage: Client.py <host> <team number>'
 #            sys.exit()
-        host = 'localhost'
-        team = '8'
+        else:
+            host=sys.argv[1]
+            team=sys.argv[2]
 
         print 'Host:', host, ', Team:', team
 
