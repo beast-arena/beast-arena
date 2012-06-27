@@ -29,6 +29,7 @@ class Client():
         else:
             host=sys.argv[1]
             team=sys.argv[2]
+            
 
         print 'Host:', host, ', Team:', team
 
