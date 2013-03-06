@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from Config import Config
+
 """
 This module supports in writing and reading data from sockets.
 """
@@ -12,7 +14,10 @@ def write(socket, data):
     """
     if socket is not None:
         try:
-            socket.write(data + '@')        
+        	if (Config.__getSSL__()):
+	            socket.write(data + '@')        
+        	else: # plain socket
+        		socket.send(data + '@')
         except Exception:
             raise # re-rase Exception that it can be handled by Server or Client
     
@@ -27,7 +32,10 @@ def read(socket):
     data = ''
     while socket is not None:
         try:
-            data += socket.read()
+            if (Config.__getSSL__()):
+	            data += socket.read()
+            else:
+            	data += socket.recv(1024) # plain socket
         except Exception:
             raise # re-rase Exception that it can be handled by Server or Client
         if len(data) == 0:

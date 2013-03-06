@@ -23,7 +23,6 @@ class ClientGui(QtGui.QMainWindow):
         """
         constructor
         """
-        
         QtGui.QMainWindow.__init__(self)
         self.setFixedSize(1024,576)
         

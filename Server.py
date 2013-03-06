@@ -45,9 +45,11 @@ class Server(threading.Thread):
                     try: # prevent exception if no client wants to connect
                         newsocket, fromaddr = self.bindsocket.accept()
                         newsocket.settimeout(0.1)
-                        client = ssl.wrap_socket(newsocket, server_side=True, certfile="ssl/server.crt",
-                                        keyfile="ssl/server.key", ssl_version=ssl.PROTOCOL_SSLv3)   
-                        
+                        if (Config.__getSSL__()):
+                        	client = ssl.wrap_socket(newsocket, server_side=True, certfile="ssl/server.crt",
+                                        keyfile="ssl/server.key", ssl_version=ssl.PROTOCOL_SSLv3)
+                        else:
+                        	client = newsocket
                         self.clientMap[client] = fromaddr, None
                         self.log.info('client ' + str(self.clientMap[client]) + ' has connected')
                     except KeyboardInterrupt:
@@ -64,10 +66,10 @@ class Server(threading.Thread):
                     inputReady, outputReady, exceptionReady = select.select(self.clientMap.keys(), [], [], 0)
                     for client in inputReady: # go through all clients which sent a request
                         clientip = None #Overwritten by local variables?? TODO: check! -> see line 86
-                        try:                        
-                            request = read(client)
-                        except Exception as e:
-                            print e
+                        #try:                        
+                        request = read(client)
+                        #except Exception as e:
+                        #    print e
                         response = self.processClientCommunication(client, request)
                         self.log.info('current clients: ' + str(self.clientMap))
                         self.log.info('current IP-Connections: ' + str(self.clientIpCountMap))

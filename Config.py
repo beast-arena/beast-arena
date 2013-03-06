@@ -9,6 +9,8 @@ class Config(object):
         config.read('beast-arena.conf')
     except ConfigParser.ParsingError, err:
         print 'Could not parse:', err
+    except Exception as e:
+    	print e
 
     def __init__(self):
         """
@@ -79,6 +81,10 @@ class Config(object):
     @staticmethod
     def __getPort__():
         return int(Config.config.get('networking', 'port'))
+        
+    @staticmethod
+    def __getSSL__():
+        return True if Config.config.get('networking', 'useSSL')=='True' else False
     
     @staticmethod
     def __getSSLKey__():

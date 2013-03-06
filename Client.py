@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import ssl, string, time
+from Config import Config
 from SocketCommunication import read, write
 from socket import socket
 from SamysBeast import SamysBeast
@@ -40,8 +41,11 @@ class Client():
         """
 	
         try:
-            self.connection = ssl.wrap_socket(socket(), cert_reqs=ssl.CERT_REQUIRED,
-                            ssl_version=ssl.PROTOCOL_SSLv3, ca_certs=self.serverCert)
+            if (Config.__getSSL__()):
+	            self.connection = ssl.wrap_socket(socket(), cert_reqs=ssl.CERT_REQUIRED, ssl_version=ssl.PROTOCOL_SSLv3, ca_certs=self.serverCert)
+            else:
+	        	self.connection = socket()
+	        	
             self.connection.connect(self.hostPort)
             return True
         except Exception as e:
@@ -52,7 +56,7 @@ class Client():
     def registration(self):
         """
         default activity with requests and responses between client and server
-        after sending 'Anmeldung!' and receiving an char the client is 
+        after sending 'Anmeldung!' and receiving an char the client is  
         registered and the listening-loop will be started
         """
         

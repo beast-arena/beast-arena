@@ -181,10 +181,12 @@ class QClient(QtCore.QThread):
         tries to connect to a ssl server 
         """
         try:
-            self.connection = ssl.wrap_socket(socket(), cert_reqs=ssl.CERT_REQUIRED,
-                            ssl_version=ssl.PROTOCOL_SSLv3, ca_certs=self.serverCert)
-            self.connection.connect(self.hostPort)
-            self.connectedToServer = True
+		    if (False): # TODO: add checkbox in GUI for ssl usage
+		        self.connection = ssl.wrap_socket(socket(), cert_reqs=ssl.CERT_REQUIRED, ssl_version=ssl.PROTOCOL_SSLv3, ca_certs=self.serverCert)
+		    else:
+		    	self.connection = socket()
+		    self.connection.connect(self.hostPort)
+		    self.connectedToServer = True
         except Exception:
             self.connDetailsNotSet = True
             self.connectedToServer = False
