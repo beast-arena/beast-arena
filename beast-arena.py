@@ -6,7 +6,7 @@ from UrwidVisualisation import UrwidVisualisation
 from Server import Server
 from Config import Config
 from GameWinners import GameWinners
-import logging, sys, threading, time
+import os, logging, sys, threading, time
 
 class beast_arena(threading.Thread):
     '''
@@ -59,7 +59,8 @@ class beast_arena(threading.Thread):
             streamHandler = logging.StreamHandler(sys.stdout)
             streamHandler.setLevel(logging.INFO)
             self.log.addHandler(streamHandler)
-            
+        if not os.path.exists('log'):
+    		os.makedirs('log')    
         fileHandler = logging.FileHandler('log/beast-arena.log')
         fileHandler.setLevel(logging.WARNING)
         self.log.addHandler(fileHandler)
